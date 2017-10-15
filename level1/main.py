@@ -4,6 +4,11 @@ from level1.importer import IdiomImporter
 from level1.reviewer import Reviewer
 
 
+def _number(**kwargs):
+    # TODO implement
+    print('number training')
+
+
 def _import(**kwargs):
     importer = IdiomImporter(
         open(kwargs['file']),
@@ -30,6 +35,10 @@ if __name__ == '__main__':
     parser_show.add_argument('-n', '--number', dest='number', default=30, type=int, help='Number of idioms to review')
     parser_show.add_argument('-c', '--commit', dest='commit', default=False, action='store_true',
                              help='Commit reviewed idioms')
+
+    # number training
+    parser_import = subparser.add_parser('number')
+
 
     kwargs = vars(parser.parse_args())
     globals()['_' + kwargs.pop('subparser')](**kwargs)

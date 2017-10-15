@@ -1,0 +1,10 @@
+#! /usr/bin/python
+
+import os
+import sys
+import inspect
+
+path = os.path.join(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))), '..')
+sys.path.insert(0, path)
+
+exec(open(os.path.join(path, 'level1', 'main.py')).read())
