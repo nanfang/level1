@@ -2,6 +2,7 @@ import argparse
 from dateutil import parser as date_parser
 from level1.importer import IdiomImporter
 
+
 def _import(**kwargs):
     importer = IdiomImporter(
         open(kwargs['file']),
@@ -10,8 +11,8 @@ def _import(**kwargs):
     importer.process()
 
 
-def _show(**kwargs):
-    print('show')
+def _review(**kwargs):
+    print('review')
     print(kwargs)
 
 
@@ -25,7 +26,7 @@ if __name__ == '__main__':
     parser_import.add_argument('-n', '--name', dest='name', required=True, help='Name to import')
 
     # parse show
-    parser_show = subparser.add_parser('show')
+    parser_show = subparser.add_parser('review')
 
     kwargs = vars(parser.parse_args())
     globals()['_' + kwargs.pop('subparser')](**kwargs)
