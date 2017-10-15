@@ -1,6 +1,7 @@
 import argparse
 from dateutil import parser as date_parser
 from level1.importer import IdiomImporter
+from level1.reviewer import Reviewer
 
 
 def _import(**kwargs):
@@ -12,8 +13,7 @@ def _import(**kwargs):
 
 
 def _review(**kwargs):
-    print('review')
-    print(kwargs)
+    Reviewer(number=kwargs['number'], commit=kwargs['commit']).review()
 
 
 if __name__ == '__main__':
@@ -27,6 +27,9 @@ if __name__ == '__main__':
 
     # parse show
     parser_show = subparser.add_parser('review')
+    parser_show.add_argument('-n', '--number', dest='number', default=30, type=int, help='Number of idioms to review')
+    parser_show.add_argument('-c', '--commit', dest='commit', default=False, action='store_true',
+                             help='Commit reviewed idioms')
 
     kwargs = vars(parser.parse_args())
     globals()['_' + kwargs.pop('subparser')](**kwargs)

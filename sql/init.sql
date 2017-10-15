@@ -1,5 +1,5 @@
 -- 001 table
-CREATE TABLE level1 (
+CREATE TABLE level1_idioms (
     id SERIAL PRIMARY KEY NOT NULL,
     idiom TEXT UNIQUE NOT NULL,
     title TEXT,

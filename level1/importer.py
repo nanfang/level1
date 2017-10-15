@@ -44,7 +44,7 @@ class IdiomImporter(object):
     def _add_idiom(self, cur, date, line, title):
         cur.execute(
             """
-            INSERT INTO level1(idiom, title, name, learnt_date, last_updated)
+            INSERT INTO level1_idioms(idiom, title, name, learnt_date, last_updated)
             VALUES (%s, %s, %s, %s, NOW())
             """, (line, title, self.name, date)
         )
