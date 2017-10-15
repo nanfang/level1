@@ -1,10 +1,9 @@
-#! /usr/bin/python
+#! /usr/local/bin/python3
 
 import os
 import sys
-import inspect
 
-path = os.path.join(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))), '..')
+path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
 sys.path.insert(0, path)
 
 exec(open(os.path.join(path, 'level1', 'main.py')).read())
