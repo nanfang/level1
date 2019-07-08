@@ -1,4 +1,6 @@
 import argparse
+import sys
+
 from dateutil import parser as date_parser
 from level1.importer import IdiomImporter
 from level1.reviewer import Reviewer
@@ -38,7 +40,10 @@ if __name__ == '__main__':
 
     # number training
     parser_import = subparser.add_parser('number')
-
+    if len(sys.argv) == 1:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
 
     kwargs = vars(parser.parse_args())
-    globals()['_' + kwargs.pop('subparser')](**kwargs)
+
+    globals()['_' + (kwargs.pop('subparser'))](**kwargs)
